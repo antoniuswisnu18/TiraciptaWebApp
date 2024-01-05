@@ -1,0 +1,97 @@
+﻿@model TiraciptaWebApp.Models.SalesOrderViewModel
+@{
+    ViewData["Title"] = "CreateSalesOrder";
+}
+<h1>CreateSalesOrder</h1>
+
+@using (Html.BeginForm("CreateSalesOrder", "SalesOrderApp", FormMethod.Post, new {id = "submitForm"}))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <div>
+            @Html.LabelFor(m => m.SalesOrderNo, "Sales Order Number: ")
+            @Html.DisplayFor(m=>m.SalesOrderNo)
+            @Html.ValidationMessageFor(m=>m.SalesOrderNo)
+            <input asp-for="SalesOrderNo" id="hiddenSalesOrderNo" type="hidden" value="@Model.SalesOrderNo">
+            <br>
+        </div><br>
+        <div>
+            @Html.LabelFor(m=>m.OrderDate, "Order Date: ")
+            @Html.DisplayFor(m=>m.OrderDate)
+            @Html.ValidationMessageFor(m=>m.OrderDate)
+@* 
+
+            <label for="orderDate">Order Date:</label>
+            <span>@Model.OrderDate.ToShortDateString()</span> *@
+        </div><br>
+        <div>
+
+            <label for="customerId">Select Customer:</label>
+            <select id="customerId" name="customerId">
+                <option value=""></option>
+                @foreach (var customer in Model.Customers)
+                {
+                    <option value="@customer.CustId">@customer.CustId</option>
+                }
+            </select>
+        </div><br>
+        <div>
+            <label for="productId">Select Product:</label>
+            <select id="productId" name="productId" onchange="getProductPrice(this.value)">
+                <option value=""></option>
+                @foreach (var product in Model.Products)
+                {
+                    <option value="@product.ProductCode">@product.ProductCode</option>
+                }
+            </select>
+        </div><br>
+        <div>
+            <label>Price:</label>
+            <span id="productPrice"></span>
+            <input asp-for="Price" id="hiddenPrice" type="hidden">
+        </div><br>
+        <div>
+            <label for="quantityInput">Quantity:</label>
+            <input type="number" id="quantityInput" value="1" min="1">
+            <input asp-for="Qty" id="hiddenQuantity" type="hidden">
+        </div><br>
+        <input id="submitButton" type="submit" value="Submit" onclick="getValue()">
+        <div>
+            <p>@ViewBag.SuccessMessage</p>
+        </div>
+    </div>
+    
+}
+<script>
+        function getValue() {
+        let quantityValue = document.getElementById('quantityInput').value;
+        document.getElementById('hiddenQuantity').value = quantityValue;
+        let hiddenQuantityValue = document.getElementById('hiddenQuantity').value;
+
+        let priceValue = document.getElementById('productPrice').textContent;
+        document.getElementById('hiddenPrice').value = priceValue;
+        let hiddenPriceValue = document.getElementById('hiddenPrice').value;
+
+
+        console.log('Hidden Quantity:', hiddenQuantityValue);
+        console.log('Hidden Price:', hiddenPriceValue);
+    }
+
+    function getProductPrice(productId) {
+        $.ajax({
+            url: `http://localhost:5188/api/Price/GetPriceForProduct/${productId}`,
+            method: 'GET',
+            success: function (response) {
+                $('#productPrice').text(response.price1);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+</script>
+
+
+

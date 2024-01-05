@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiraciptaWebApp", "TiraciptaWebApp\TiraciptaWebApp.csproj", "{1891E18D-FCFC-4468-B69A-A46AF92A3C91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiraciptaAPI", "TiraciptaAPI\TiraciptaAPI.csproj", "{348FDFBD-C244-4ED9-97A0-9C99AA1C84A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1891E18D-FCFC-4468-B69A-A46AF92A3C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1891E18D-FCFC-4468-B69A-A46AF92A3C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1891E18D-FCFC-4468-B69A-A46AF92A3C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1891E18D-FCFC-4468-B69A-A46AF92A3C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{348FDFBD-C244-4ED9-97A0-9C99AA1C84A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{348FDFBD-C244-4ED9-97A0-9C99AA1C84A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{348FDFBD-C244-4ED9-97A0-9C99AA1C84A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{348FDFBD-C244-4ED9-97A0-9C99AA1C84A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F6C6304-0890-4777-8FA8-452BF1781DAA}
+	EndGlobalSection
+EndGlobal
